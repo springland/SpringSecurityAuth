@@ -13,7 +13,7 @@
 
 
 
-# A SpringBoot server running on https
+## A SpringBoot server running on https
 
 To setup a https server. Needs to get an certification signed by CA instead of using
 self signed
@@ -23,17 +23,17 @@ self signed
 [certbot](https://github.com/certbot/certbot)
 
 
-# web security configuration
+## web security configuration
 
 Setup web security configuration
 
-# Encrypt Password
+## Encrypt Password
 
 Can do the below
 1. Use Jaspery
 2. Use HashiCorp Valut
 
-# Password Encoder
+## Password Encoder
 
 Use Password Encoder to protect user password
 password  + salt , bcrypt
