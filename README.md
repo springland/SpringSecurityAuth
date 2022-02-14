@@ -57,10 +57,25 @@ install certbot
 sudo snap install core; sudo snap refresh core
 sudo snap install --classic certbot
 sudo ln -s /snap/bin/certbot /usr/bin/certbot
-sudo certbot certonly --standalone
 
-Build an EC2 instance for the above , then copy the certification to s3 bucket
-to download the certification
+sudo certbot certonly --standalone --preferred-challenges http -d dev.inkuii.com
+
+Successfully received certificate.
+Certificate is saved at: /etc/letsencrypt/live/dev.inkuii.com/fullchain.pem
+Key is saved at:         /etc/letsencrypt/live/dev.inkuii.com/privkey.pem
+This certificate expires on 2022-05-11.
+These files will be updated when the certificate renews.
+Certbot has set up a scheduled task to automatically renew this certificate in the background.
+
+
+
+Use SCP to download the certificate
+
+ 1. View it: openssl x509 -in certificate.pem -noout -text
+ 2. Convert PKCS12 from PEM certificate with Key using openssl : openssl pkcs12 -export -name dev-inkuii -in fullchain.pem -inkey  privkey.pem -out cacerts.p12 
+    
+
+update /etc/hosts to add dev.inkuii.com 
 
 
 ### web security configuration
