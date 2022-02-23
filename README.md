@@ -80,7 +80,30 @@ update /etc/hosts to add dev.inkuii.com
 
 ### web security configuration
 
-Setup web security configuration
+
+1. Use H2 as user repository 
+2. Initialize user list
+3. all of the end points requires authenticated user
+4. Actuator endpoints are excluded
+
+
+DaoAuthenticationProvider is using DelegatingPasswordEncoder by default
+Logic is  
+  1. call JdbcDaoImpl to retrieve User ( bcrypt password) 
+  2. get password from UsernamePasswordAuthenticationToken  (plain password)
+  3. call passwordEncoder.matches(presentedPassword, userDetails.getPassword()) to compare
+
+InMemoryUserDetailsManager is called by DaoAuthenticationProvider as well
+
+spring encodepassword test
+spring encodepassword admin
+
+
+Using JdbcUserDetailsManager 
+
+curl https://dev.inkuii.com:8443/actuator
+
+
 
 ### Encrypt Password
 
